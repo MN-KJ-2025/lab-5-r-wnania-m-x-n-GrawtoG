@@ -8,6 +8,7 @@
 #     - Weryfikujące poprawność wyników dla prawidłowych danych wejściowych.
 # =============================================================================
 import numpy as np
+print(np.linspace(1,10))
 
 
 def spare_matrix_Abt(m: int, n: int) -> tuple[np.ndarray, np.ndarray] | None:
@@ -24,7 +25,15 @@ def spare_matrix_Abt(m: int, n: int) -> tuple[np.ndarray, np.ndarray] | None:
             - Wektor b (m,).
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    try: 
+        if not isinstance(m,int) or not isinstance(n,int):
+            return None
+        if m<=0 or n<=0:
+            return None
+        t=np.linspace(0,1,m)
+        return (np.asarray(np.vander(t,n, True)),np.asarray([np.cos(4*_t) for _t in t]))
+    except Exception:
+        return None
 
 
 def square_from_rectan(
@@ -44,7 +53,14 @@ def square_from_rectan(
             - Wektor b_new (n,).
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    try:
+            
+        A=np.asarray(A)
+        b=np.asarray(b)
+        
+    except Exception:
+        return None
+    
 
 
 def residual_norm(A: np.ndarray, x: np.ndarray, b: np.ndarray) -> float | None:
@@ -60,4 +76,11 @@ def residual_norm(A: np.ndarray, x: np.ndarray, b: np.ndarray) -> float | None:
         (float): Wartość normy residuum dla podanych parametrów.
         Jeżeli dane wejściowe są niepoprawne funkcja zwraca `None`.
     """
-    pass
+    try:
+        
+        r=np.dot(A,x)-b
+        return np.linalg.norm(r)
+    except:
+        return None
+
+
