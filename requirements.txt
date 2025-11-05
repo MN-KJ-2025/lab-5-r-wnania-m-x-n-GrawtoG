@@ -3,3 +3,4 @@ matplotlib
 numpy
 scipy
 memory_profiler
+setuptools
